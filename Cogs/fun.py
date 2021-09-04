@@ -7,13 +7,6 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        channel = commands.get_channel(883597617009917982)
-        await channel.send(f'Welcome {member}!')
-        role = commands.get(member.guild.roles, id=883596677234176030)
-        await member.add_roles(role)
-
     @commands.command()
     async def comfort(self,ctx):
         title_list = ['(づ ◕‿◕ )づ', '⊂((・▽・))⊃', '(.づσ▿σ)づ.', '⊂( ◜◒◝ )⊃', '(づ￣ ³￣)づ']

@@ -7,9 +7,12 @@ class Moderation(commands.Cog):
         self.bot = bot
 
     #Events
-    #@commands.Cog.listener()
-    #async def on_ready(self):
-    #    print('Bot is ready.')
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        channel = commands.get_channel(883597617009917982)
+        await channel.send(f'Welcome {member}!')
+        role = commands.get(member.guild.roles, id=883596677234176030)
+        await member.add_roles(role)
     
     #Commands
     @commands.command()
