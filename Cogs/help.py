@@ -11,7 +11,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Help',
             description = 'Use `.help <command>` for extended information on that command.',
-            color = ctx.author.color
+            color = discord.Color.light_grey
         )
         embed.add_field(name = 'Moderation', value = 'clear \nkick \nban \nunban')
         embed.add_field(name = 'Fun', value = 'ping \n8ball \ncomfort')
@@ -23,7 +23,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Kick',
             description = 'Kicks a member from the server.',
-            color = ctx.author.color
+            color = discord.Color.light_grey()
         )
         embed.add_field(name = 'Syntax', value = '`.kick <member> [reason]`')
 
@@ -34,7 +34,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Ban',
             description = 'Bans a member from the server.',
-            color = ctx.author.color
+            color = discord.Color.light_grey
         )
         embed.add_field(name = 'Syntax', value = '`.ban <member> [reason]`')
 
@@ -45,7 +45,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Clear',
             description = 'Clears a certain amount of messages.\nDefault is set to 1. ',
-            color = ctx.author.color
+            color = discord.Color.light_grey
         )
         embed.add_field(name = 'Syntax', value = '`.clear [amount]`')
 
@@ -56,7 +56,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Unban',
             description = 'Unbans a user from the server.',
-            color = ctx.author.color
+            color = discord.Color.light_grey
         )
         embed.add_field(name= 'Syntax', value = '`.unban <user>`')
         
@@ -67,7 +67,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Ping',
             description = 'Sends Pong!',
-            color = ctx.author.color
+            color = discord.Color.light_grey
         )
         embed.add_field(name= 'Syntax', value = '`.ping`')
         
@@ -78,7 +78,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = '8ball',
             description = 'Gives you an answer to a yes or no question.',
-            color = ctx.author.color
+            color = discord.Color.light_grey
         )
         embed.add_field(name= 'Syntax', value = '`.8ball <question>`')
         
@@ -89,7 +89,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Comfort',
             description = 'Sends a comforting gif',
-            color = ctx.author.color
+            color = discord.Color.light_grey
         )
         embed.add_field(name= 'Syntax', value = '`.comfort`')
         
