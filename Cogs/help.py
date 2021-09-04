@@ -11,7 +11,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Help',
             description = 'Use `.help <command>` for extended information on that command.',
-            color = discord.Color.light_grey
+            color = discord.Color.light_grey()
         )
         embed.add_field(name = 'Moderation', value = 'clear \nkick \nban \nunban')
         embed.add_field(name = 'Fun', value = 'ping \n8ball \ncomfort')

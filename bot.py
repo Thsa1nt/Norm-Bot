@@ -4,6 +4,8 @@ from discord.colour import Color
 from discord.ext import commands, tasks
 from itertools import cycle
 
+invite_link = 'https://discord.com/oauth2/authorize?client_id={0}&scope=bot&permissions={1}'.format(878977777074835487, 268528774)
+print(invite_link)
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=".", intents=intents)
 status = cycle(['Still Testing', 'Fixing bugs'])
@@ -22,6 +24,7 @@ async def on_member_join(member : discord.Member):
     await channel.send('Welcome {}!'.format(member.mention))
 
 @bot.command()
+@commands.is_owner()
 async def load(ctx, extension):
     bot.load_extension(f'Cogs.{extension}')
     embed = discord.Embed(
@@ -31,6 +34,7 @@ async def load(ctx, extension):
     await ctx.send(embed=embed)
 
 @bot.command()
+@commands.is_owner()
 async def unload(ctx, extension):
     bot.unload_extension(f'Cogs.{extension}')
     embed = discord.Embed(
@@ -40,6 +44,7 @@ async def unload(ctx, extension):
     await ctx.send(embed=embed)
 
 @bot.command()
+@commands.is_owner()
 async def reload(ctx, extension):
     bot.unload_extension(f'Cogs.{extension}')
     bot.load_extension(f'Cogs.{extension}')
