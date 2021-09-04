@@ -50,7 +50,7 @@ async def reload(ctx, extension):
     bot.load_extension(f'Cogs.{extension}')
     embed = discord.Embed(
         description= f'{extension} has been reloaded.',
-        color= discord.Color.green()
+        color= discord.Color.green() 
     )
     await ctx.send(embed=embed)
 
