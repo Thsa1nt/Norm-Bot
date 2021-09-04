@@ -50,4 +50,4 @@ for filename in os.listdir('./Cogs'):
 async def change_status():
     await bot.change_presence(activity=discord.Game(next(status)))
 
-bot.run('token')
+bot.run('ODc4OTc3Nzc3MDc0ODM1NDg3.YSJB2A.3uNvzlz9QSwoBIw1HDYYMksmbsk')
