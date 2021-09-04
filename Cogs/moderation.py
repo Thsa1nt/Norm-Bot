@@ -5,18 +5,10 @@ class Moderation(commands.Cog):
     
     def __init__(self,bot):
         self.bot = bot
-
-    #Events
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        channel = commands.get_channel(883597617009917982)
-        await channel.send(f'Welcome {member}!')
-        role = commands.get(member.guild.roles, id=883596677234176030)
-        await member.add_roles(role)
     
     #Commands
     @commands.command()
-    async def clear(self,ctx, member: discord.Member, amount=1):
+    async def clear(self,ctx, amount=1):
         await ctx.channel.purge(limit= amount + 1)
         
     @commands.command()

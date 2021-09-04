@@ -14,6 +14,11 @@ async def on_ready():
     change_status.start()
     print('Bot is ready.')
 
+@bot.event
+async def on_member_join(member : discord.Member):
+    channel = bot.get_channel(883597617009917982)
+    await channel.send('Welcome {}!'.format(member.mention))
+
 @bot.command()
 async def load(ctx, extension):
     bot.load_extension(f'Cogs.{extension}')
