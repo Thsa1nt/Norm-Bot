@@ -105,5 +105,7 @@ class Help(commands.Cog):
         )
         embed.add_field(name= 'Syntax', value='`.slap <member>`')
 
+        await ctx.send(embed = embed)
+        
 def setup(bot):
     bot.add_cog(Help(bot))
