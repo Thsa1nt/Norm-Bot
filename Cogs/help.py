@@ -14,7 +14,8 @@ class Help(commands.Cog):
             color = discord.Color.light_grey()
         )
         embed.add_field(name = 'Moderation', value = 'clear \nkick \nban \nunban')
-        embed.add_field(name = 'Fun', value = 'ping \n8ball \ncomfort')
+        embed.add_field(name = 'Fun', value = 'ping \n8ball')
+        embed.add_field(name = 'Actions', value = 'comfort \nslap')
 
         await ctx.send(embed=embed)
 
@@ -88,12 +89,21 @@ class Help(commands.Cog):
     async def comfort(self,ctx):
         embed = discord.Embed(
             title = 'Comfort',
-            description = 'Sends a comforting gif',
+            description = 'Comfort a member!',
             color = discord.Color.light_grey
         )
-        embed.add_field(name= 'Syntax', value = '`.comfort`')
+        embed.add_field(name= 'Syntax', value = '`.comfort <member>`')
         
         await ctx.send(embed=embed)
+
+    @help.command()
+    async def slap(self,ctx):
+        embed = discord.Embed(
+            title = 'Slap',
+            description = 'Slap a member in the face!',
+            color = discord.Color.light_grey
+        )
+        embed.add_field(name= 'Syntax', value='`.slap <member>`')
 
 def setup(bot):
     bot.add_cog(Help(bot))
