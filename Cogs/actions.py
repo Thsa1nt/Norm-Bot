@@ -26,8 +26,8 @@ class Actions(commands.Cog):
             await ctx.send(embed=embed)
 
     @commands.command()
-    async def comfort(self,ctx):
-        title_list = ['(づ ◕‿◕ )づ', '⊂((・▽・))⊃', '(.づσ▿σ)づ.', '⊂( ◜◒◝ )⊃', '(づ￣ ³￣)づ']
+    async def comfort(self,ctx, member: discord.Member):
+        hugs = ['(づ ◕‿◕ )づ', '⊂((・▽・))⊃', '(.づσ▿σ)づ.', '⊂( ◜◒◝ )⊃', '(づ￣ ³￣)づ']
         url_list = [
             'https://c.tenor.com/DCMl9bvSDSwAAAAd/pat-head-gakuen-babysitters.gif',
             'https://c.tenor.com/vcGsz5CfDs4AAAAC/peach-cat-peach.gif',
@@ -36,12 +36,16 @@ class Actions(commands.Cog):
             'https://c.tenor.com/uW0B9nSn4DsAAAAC/there-there-cats.gif'
         ]
 
-        embed = discord.Embed(
-            title = random.choice(title_list),
-            color = discord.Color.blue()   
-            )    
-        embed.set_image(url=random.choice(url_list))
-        await ctx.send(embed=embed)
+        if ctx.author == member:
+            await ctx.send(f'It\'ll be okay {ctx.author.name} {random.choice(hugs)}')
+        else:
+            embed = discord.Embed(
+                description = f'{ctx.author.name} comforts {member.name} {random.choice(hugs)}',
+                color = discord.Color.blue()   
+                )    
+            embed.set_image(url=random.choice(url_list))
+            await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(Actions(bot))
