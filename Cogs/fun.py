@@ -72,7 +72,7 @@ class Fun(commands.Cog):
         "My sources say no.",
         "Outlook not so good.",
         "Very doubtful."]
-        await ctx.send(f'Question: {question}\nAsnwer: {random.choice(responses)}')
+        await ctx.send(random.choice(responses))
 
 def setup(bot):
     bot.add_cog(Fun(bot))
