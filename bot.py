@@ -1,6 +1,5 @@
 import discord
 import os
-from discord.colour import Color
 from discord.ext import commands, tasks
 from itertools import cycle
 
@@ -29,7 +28,7 @@ async def load(ctx, extension):
     bot.load_extension(f'Cogs.{extension}')
     embed = discord.Embed(
         description= f'{extension} has been loaded.',
-        color= discord.Color.green()
+        color= discord.Color.blue()
     )
     await ctx.send(embed=embed)
 
@@ -39,7 +38,7 @@ async def unload(ctx, extension):
     bot.unload_extension(f'Cogs.{extension}')
     embed = discord.Embed(
         description= f'{extension} has been unloaded.',
-        color= discord.Color.green()
+        color= discord.Color.blue()
     )
     await ctx.send(embed=embed)
 
@@ -50,7 +49,7 @@ async def reload(ctx, extension):
     bot.load_extension(f'Cogs.{extension}')
     embed = discord.Embed(
         description= f'{extension} has been reloaded.',
-        color= discord.Color.green() 
+        color= discord.Color.blue() 
     )
     await ctx.send(embed=embed)
 

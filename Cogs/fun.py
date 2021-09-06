@@ -1,11 +1,31 @@
 import discord
 import random
+from discord.colour import Color
 from discord.ext import commands
 
 class Fun(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.command()
+    async def slap(self, ctx, member: discord.Member):
+        url_list = [
+            'https://c.tenor.com/PTONt_7DUTgAAAAC/batman-slap-robin.gif',
+            'https://c.tenor.com/vr7tTAEuj1QAAAAC/baka-slap.gif',
+            'https://c.tenor.com/L0U84S9YTrYAAAAC/pikachu-slap.gif',
+            'https://c.tenor.com/mMGM1FfaXLgAAAAC/slap-cat.gif'
+        ]
+        if ctx.author == member:
+            await ctx.send(f'{ctx.author.name}.... you can\'t slap yourself!')
+        else:
+            embed = discord.Embed(
+                description= f'{ctx.author.name} slaps {member.display_name}!!',
+                color= discord.Color.gold()
+            )
+            embed.set_image(url=random.choice(url_list))
+            await ctx.send(embed=embed)
+
 
     @commands.command()
     async def comfort(self,ctx):
