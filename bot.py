@@ -16,7 +16,7 @@ async def on_ready():
     print('Bot is ready.')
 
 @bot.event
-async def on_command_error(ctx, error):
+async def on_command_error(error):
     if isinstance(error,commands.MissingRequiredArgument):
         return
     elif isinstance(error, commands.CommandNotFound):
