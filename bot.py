@@ -3,6 +3,8 @@ import os
 from discord.ext import commands, tasks
 from itertools import cycle
 
+from discord.ext.commands.errors import CommandOnCooldown
+
 invite_link = 'https://discord.com/oauth2/authorize?client_id={0}&scope=bot&permissions={1}'.format(878977777074835487, 268528774)
 print(invite_link)
 intents = discord.Intents.all()
@@ -16,11 +18,14 @@ async def on_ready():
     print('Bot is ready.')
 
 @bot.event
-async def on_command_error(error):
+async def on_command_error(ctx, error):
     if isinstance(error,commands.MissingRequiredArgument):
         return
     elif isinstance(error, commands.CommandNotFound):
         return
+    elif isinstance(error, CommandOnCooldown):
+         await ctx.send('Wait %.2fs to use the command again.' % error.retry_after)
+         return
     raise error
 
 @bot.event

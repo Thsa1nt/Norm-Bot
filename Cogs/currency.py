@@ -44,6 +44,7 @@ class Currency(commands.Cog):
             await ctx.send(embed=embed)
 
     @commands.command()
+    @commands.cooldown(1, 60, commands.BucketType.user)
     async def beg(self, ctx):
         id = str(ctx.message.author.id)
         amount = random.randint(25, 200)
