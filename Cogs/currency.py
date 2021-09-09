@@ -21,27 +21,46 @@ class Currency(commands.Cog):
         try:
             with open('amounts.json') as f:
                 amounts = json.load(f)
+                print("Currency ready.")
         except FileNotFoundError:
             print("Could not load amounts.json")
             amounts = {}
 
+
     @commands.command()
-    async def balance(self, ctx):
-        id = str(ctx.message.author.id)
-        if id in amounts:
-            embed = discord.Embed(
-                description= f'Balance: {amounts[id]} coins.',
-                color = discord.Color.red()
-            )
-            await ctx.send(embed=embed)
+    async def balance(self, ctx, member: discord.Member = None):
+        author_id = str(ctx.message.author.id)
+        if member == None:
+            if author_id in amounts:
+                embed = discord.Embed(
+                    description= f'Balance: {amounts[author_id]} coins.',
+                    color = discord.Color.red()
+                )
+                await ctx.send(embed=embed)
+            else:
+                amounts[author_id] = 0
+                _save()
+                embed = discord.Embed(
+                    description= f'Balance: {amounts[author_id]} coins.',
+                    color = discord.Color.red()
+                )
+                await ctx.send(embed=embed)
         else:
-            amounts[id] = 0
-            _save()
-            embed = discord.Embed(
-                description= f'Balance: {amounts[id]} coins.',
-                color = discord.Color.red()
-            )
-            await ctx.send(embed=embed)
+            member_id = str(member.id)
+            if member_id in amounts:
+                embed = discord.Embed(
+                    description= f'Balance: {amounts[member_id]} coins.',
+                    color = discord.Color.red()
+                )
+                await ctx.send(embed=embed)
+            else:
+                amounts[member_id] = 0
+                _save()
+                embed = discord.Embed(
+                    description= f'Balance: {amounts[author_id]} coins.',
+                    color = discord.Color.red()
+                )
+                await ctx.send(embed=embed)
 
     @commands.command()
     @commands.cooldown(1, 60, commands.BucketType.user)
@@ -51,11 +70,6 @@ class Currency(commands.Cog):
         amounts[id] += amount
         _save()
         await ctx.send(f'You were given {amount} coins.')
-            
-
-    @commands.command()
-    async def save(self):
-        _save()
 
 def setup(bot):
     bot.add_cog(Currency(bot))
