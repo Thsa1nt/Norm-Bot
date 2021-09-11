@@ -16,15 +16,17 @@ class Help(commands.Cog):
         embed.add_field(name = 'Moderation', value = 'clear \nkick \nban \nunban')
         embed.add_field(name = 'Fun', value = 'ping \n8ball')
         embed.add_field(name = 'Actions', value = 'comfort \nslap')
+        embed.add_field(name = 'Currency', value = 'balance \nbeg')
 
         await ctx.send(embed=embed)
 
+    # MODERATION
     @help.command()
     async def kick(self,ctx):
         embed = discord.Embed(
             title = 'Kick',
             description = 'Kicks a member from the server.',
-            color = discord.Color.light_grey()
+            color = discord.Color.blue()
         )
         embed.add_field(name = 'Syntax', value = '`.kick <member> [reason]`')
 
@@ -35,7 +37,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Ban',
             description = 'Bans a member from the server.',
-            color = discord.Color.light_grey
+            color = discord.Color.blue()
         )
         embed.add_field(name = 'Syntax', value = '`.ban <member> [reason]`')
 
@@ -46,7 +48,7 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Clear',
             description = 'Clears a certain amount of messages.\nDefault is set to 1. ',
-            color = discord.Color.light_grey
+            color = discord.Color.blue()
         )
         embed.add_field(name = 'Syntax', value = '`.clear [amount]`')
 
@@ -57,18 +59,19 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Unban',
             description = 'Unbans a user from the server.',
-            color = discord.Color.light_grey
+            color = discord.Color.blue()
         )
         embed.add_field(name= 'Syntax', value = '`.unban <user>`')
         
         await ctx.send(embed=embed)
 
+    # FUN
     @help.command()
     async def ping(self,ctx):
         embed = discord.Embed(
             title = 'Ping',
             description = 'Sends Pong!',
-            color = discord.Color.light_grey
+            color = discord.Color.green()
         )
         embed.add_field(name= 'Syntax', value = '`.ping`')
         
@@ -79,18 +82,19 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = '8ball',
             description = 'Gives you an answer to a yes or no question.',
-            color = discord.Color.light_grey
+            color = discord.Color.green()
         )
         embed.add_field(name= 'Syntax', value = '`.8ball <question>`')
         
         await ctx.send(embed=embed)
 
+    # ACTIONS
     @help.command()
     async def comfort(self,ctx):
         embed = discord.Embed(
             title = 'Comfort',
             description = 'Comfort a member!',
-            color = discord.Color.light_grey
+            color = discord.Color.gold()
         )
         embed.add_field(name= 'Syntax', value = '`.comfort <member>`')
         
@@ -101,11 +105,34 @@ class Help(commands.Cog):
         embed = discord.Embed(
             title = 'Slap',
             description = 'Slap a member in the face!',
-            color = discord.Color.light_grey
+            color = discord.Color.gold()
         )
         embed.add_field(name= 'Syntax', value='`.slap <member>`')
 
         await ctx.send(embed = embed)
-        
+
+    # CURRENCY
+    @help.command()
+    async def balance(self, ctx):
+        embed = discord.Embed(
+            title = 'Balance',
+            description= 'Gives the balance of a member.',
+            color = discord.Color.red()
+        )
+        embed.add_field(name = 'Syntax', value = '`.balance [member]`')
+
+        await ctx.send(embed=embed)
+
+    @help.command()
+    async def beg(self, ctx):
+        embed = discord.Embed(
+            title = 'Beg',
+            description= 'Beg for money.',
+            color = discord.Color.red()
+        )
+        embed.add_field(name = 'Syntax', value = '`.beg`')
+
+        await ctx.send(embed=embed)
+    
 def setup(bot):
     bot.add_cog(Help(bot))
