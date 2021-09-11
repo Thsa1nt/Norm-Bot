@@ -9,12 +9,11 @@ invite_link = 'https://discord.com/oauth2/authorize?client_id={0}&scope=bot&perm
 print(invite_link)
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=".", intents=intents)
-status = cycle(['Still Testing', 'Fixing bugs'])
 bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    change_status.start()
+    await bot.change_presence(status= discord.Status.online, activity= discord.Game(".help"))
     print('Bot is ready.')
 
 @bot.event
@@ -69,9 +68,5 @@ async def reload(ctx, extension):
 for filename in os.listdir('./Cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'Cogs.{filename[:-3]}')
-
-@tasks.loop(seconds=10)
-async def change_status():
-    await bot.change_presence(activity=discord.Game(next(status)))
 
 bot.run('ODc4OTc3Nzc3MDc0ODM1NDg3.YSJB2A.3uNvzlz9QSwoBIw1HDYYMksmbsk')
