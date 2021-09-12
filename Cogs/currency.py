@@ -5,7 +5,7 @@ from discord.ext import commands
 
 amounts = {}
 
-def _save():
+def save():
     with open('amounts.json', 'w+') as f:
         json.dump(amounts, f)
 
@@ -33,7 +33,7 @@ class Currency(commands.Cog):
             author_id = str(ctx.message.author.id)
             if author_id not in amounts:
                 amounts[author_id] = 0
-                _save()
+                save()
             embed = discord.Embed(
                 description= f'Balance: {amounts[author_id]} coins.',
                 color = discord.Color.red()
@@ -42,7 +42,7 @@ class Currency(commands.Cog):
             member_id = str(member.id)
             if member_id not in amounts:
                 amounts[member_id] = 0
-                _save()
+                save()
             embed = discord.Embed(
                 description= f'Balance: {amounts[member_id]} coins.',
                 color = discord.Color.red()
@@ -55,7 +55,16 @@ class Currency(commands.Cog):
         id = str(ctx.message.author.id)
         amount = random.randint(25, 200)
         amounts[id] += amount
-        _save()
+        save()
+        await ctx.send(f'You were given {amount} coins.')
+
+    @commands.command()
+    @commands.cooldown(1, 3600, commands.BucketType.user)
+    async def work(self, ctx):
+        id = str(ctx.message.author.id)
+        amount = random.randint(250, 1000)
+        amounts[id] += amount
+        save()
         await ctx.send(f'You were given {amount} coins.')
 
 def setup(bot):
