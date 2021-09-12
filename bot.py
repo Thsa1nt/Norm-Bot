@@ -23,8 +23,11 @@ async def on_command_error(ctx, error):
     elif isinstance(error, commands.CommandNotFound):
         return
     elif isinstance(error, CommandOnCooldown):
-         await ctx.send('Wait %.2fs to use the command again.' % error.retry_after)
-         return
+        if error.retry_after < 60:
+            await ctx.send('Wait {0}s to use the command again.'.format(error.retry_after))
+        elif error.retry_after >= 60 and error.retry_after < 3600:
+            await ctx.send('Wait {0}min to use the command again.'.format(round(error.retry_after / 60, 1)))
+        return
     raise error
 
 @bot.event
