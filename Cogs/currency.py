@@ -29,39 +29,26 @@ class Currency(commands.Cog):
 
     @commands.command()
     async def balance(self, ctx, member: discord.Member = None):
-        author_id = str(ctx.message.author.id)
         if member == None:
-            if author_id in amounts:
-                embed = discord.Embed(
-                    description= f'Balance: {amounts[author_id]} coins.',
-                    color = discord.Color.red()
-                )
-                await ctx.send(embed=embed)
-            else:
+            author_id = str(ctx.message.author.id)
+            if author_id not in amounts:
                 amounts[author_id] = 0
                 _save()
-                embed = discord.Embed(
-                    description= f'Balance: {amounts[author_id]} coins.',
-                    color = discord.Color.red()
-                )
-                await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description= f'Balance: {amounts[author_id]} coins.',
+                color = discord.Color.red()
+            )
         else:
             member_id = str(member.id)
-            if member_id in amounts:
-                embed = discord.Embed(
-                    description= f'Balance: {amounts[member_id]} coins.',
-                    color = discord.Color.red()
-                )
-                await ctx.send(embed=embed)
-            else:
+            if member_id not in amounts:
                 amounts[member_id] = 0
                 _save()
-                embed = discord.Embed(
-                    description= f'Balance: {amounts[author_id]} coins.',
-                    color = discord.Color.red()
-                )
-                await ctx.send(embed=embed)
-
+            embed = discord.Embed(
+                description= f'Balance: {amounts[member_id]} coins.',
+                color = discord.Color.red()
+            )        
+        await ctx.send(embed=embed)
+            
     @commands.command()
     @commands.cooldown(1, 60, commands.BucketType.user)
     async def beg(self, ctx):
