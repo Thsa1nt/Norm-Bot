@@ -67,5 +67,19 @@ class Currency(commands.Cog):
         save()
         await ctx.send(f'You were given {amount} coins.')
 
+    @commands.command()
+    async def gamble(self, ctx, amount: int):
+        if amount < 100:
+            await ctx.send('Your bet is too small! \nBet must be at least 100 coins')
+            return
+        id = str(ctx.message.author.id)
+        outcome = random.randint(0, 1)
+        if outcome == 1:
+            amounts[id] += amount 
+            await ctx.send(f'You win! {amount} coins were added to your balance.')
+        else:
+            amounts[id] -= amount
+            await ctx.send(f'You lost! {amount} coins were deducted from your balance.')
+
 def setup(bot):
     bot.add_cog(Currency(bot))
