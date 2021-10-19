@@ -16,7 +16,7 @@ class Help(commands.Cog):
         embed.add_field(name = 'Moderation', value = 'clear \nkick \nban \nunban')
         embed.add_field(name = 'Fun', value = 'ping \n8ball')
         embed.add_field(name = 'Actions', value = 'comfort \nslap')
-        embed.add_field(name = 'Currency', value = 'balance \nbeg')
+        embed.add_field(name = 'Currency', value = 'balance \nbeg \nwork \ngamble')
 
         await ctx.send(embed=embed)
 
@@ -131,6 +131,28 @@ class Help(commands.Cog):
             color = discord.Color.red()
         )
         embed.add_field(name = 'Syntax', value = '`.beg`')
+
+        await ctx.send(embed=embed)
+    
+    @help.command()
+    async def work(self, ctx):
+        embed = discord.Embed(
+            title = 'Work',
+            description= 'Work for more money!',
+            color = discord.Color.red()
+        )
+        embed.add_field(name = 'Syntax', value = '`.work`')
+
+        await ctx.send(embed=embed)
+    
+    @help.command()
+    async def gamble(self, ctx):
+        embed = discord.Embed(
+            title = 'Gamble',
+            description= 'Gamble for the chance of doubling your bet',
+            color = discord.Color.red()
+        )
+        embed.add_field(name = 'Syntax', value = '`.gamble <amount>`')
 
         await ctx.send(embed=embed)
     

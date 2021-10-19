@@ -2,7 +2,6 @@ import discord
 import os
 from discord.ext import commands, tasks
 from itertools import cycle
-
 from discord.ext.commands.errors import CommandOnCooldown
 
 invite_link = 'https://discord.com/oauth2/authorize?client_id={0}&scope=bot&permissions={1}'.format(878977777074835487, 268528774)
