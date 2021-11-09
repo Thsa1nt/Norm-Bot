@@ -13,10 +13,10 @@ class Help(commands.Cog):
             description = 'Use `.help <command>` for extended information on that command.',
             color = discord.Color.light_grey()
         )
-        embed.add_field(name = 'Moderation', value = 'clear \nkick \nban \nunban')
-        embed.add_field(name = 'Fun', value = 'ping \n8ball')
-        embed.add_field(name = 'Actions', value = 'comfort \nslap')
-        embed.add_field(name = 'Currency', value = 'balance \nbeg \nwork \ngamble')
+        embed.add_field(name = 'Moderation', value = '`clear`, `kick`, `ban`, `unban`')
+        embed.add_field(name = 'Fun', value = '`ping`, `8ball`')
+        embed.add_field(name = 'Actions', value = '`comfort`, `slap`')
+        embed.add_field(name = 'Currency', value = '`balance`, `beg`, `work`, `gamble`')
 
         await ctx.send(embed=embed)
 
