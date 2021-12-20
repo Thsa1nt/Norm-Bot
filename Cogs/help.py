@@ -10,7 +10,7 @@ class Help(commands.Cog):
     async def help(self,ctx):
         embed = discord.Embed(
             title = 'Help',
-            description = 'Use `.help <command>` for extended information on that command.',
+            description = 'Use `.help <category>` for extended information on that command.',
             color = discord.Color.light_grey()
         )
         embed.add_field(name = 'Moderation', value = '`clear`, `kick`, `ban`, `unban`')
@@ -22,138 +22,58 @@ class Help(commands.Cog):
 
     # MODERATION
     @help.command()
-    async def kick(self,ctx):
+    async def moderation(self,ctx):
         embed = discord.Embed(
-            title = 'Kick',
-            description = 'Kicks a member from the server.',
+            title = 'Moderation',
+            description = 'Everything you need to know about moderation.',
             color = discord.Color.blue()
         )
-        embed.add_field(name = 'Syntax', value = '`.kick <member> [reason]`')
+        embed.add_field(name = 'Kick', value = 'Kicks a member. \n`.kick <member> [reason]`')
+        embed.add_field(name = 'Ban', value = 'Bans a member. \n`.ban <member> [reason]`')
+        embed.add_field(name = 'Clear', value = 'Deletes a specifies amount of messages. \n`.clear [amount]`')
+        embed.add_field(name= 'Unban', value = 'Unbans a member. \n`.unban <user>`')
 
-        await ctx.send(embed=embed)
-    
-    @help.command()
-    async def ban(self,ctx):
-        embed = discord.Embed(
-            title = 'Ban',
-            description = 'Bans a member from the server.',
-            color = discord.Color.blue()
-        )
-        embed.add_field(name = 'Syntax', value = '`.ban <member> [reason]`')
-
-        await ctx.send(embed=embed)
-    
-    @help.command()
-    async def clear(self,ctx):
-        embed = discord.Embed(
-            title = 'Clear',
-            description = 'Clears a certain amount of messages.\nDefault is set to 1. ',
-            color = discord.Color.blue()
-        )
-        embed.add_field(name = 'Syntax', value = '`.clear [amount]`')
-
-        await ctx.send(embed=embed)
-
-    @help.command()
-    async def unban(self,ctx):
-        embed = discord.Embed(
-            title = 'Unban',
-            description = 'Unbans a user from the server.',
-            color = discord.Color.blue()
-        )
-        embed.add_field(name= 'Syntax', value = '`.unban <user>`')
-        
         await ctx.send(embed=embed)
 
     # FUN
     @help.command()
-    async def ping(self,ctx):
+    async def fun(self,ctx):
         embed = discord.Embed(
-            title = 'Ping',
-            description = 'Sends Pong!',
+            title = 'Fun',
+            description = 'All of the fun commands!',
             color = discord.Color.green()
         )
-        embed.add_field(name= 'Syntax', value = '`.ping`')
-        
-        await ctx.send(embed=embed)
-
-    @help.command(aliases= ['8ball'])
-    async def _8ball(self,ctx):
-        embed = discord.Embed(
-            title = '8ball',
-            description = 'Gives you an answer to a yes or no question.',
-            color = discord.Color.green()
-        )
-        embed.add_field(name= 'Syntax', value = '`.8ball <question>`')
+        embed.add_field(name= 'Ping', value = 'Sends Pong! \n`.ping`')
+        embed.add_field(name= '8ball', value = 'Gives you an answer to a yes or no quesstion. \n`.8ball <question>`')
         
         await ctx.send(embed=embed)
 
     # ACTIONS
     @help.command()
-    async def comfort(self,ctx):
+    async def actions(self,ctx):
         embed = discord.Embed(
-            title = 'Comfort',
-            description = 'Comfort a member!',
+            title = 'Actions',
+            description = 'All of the actions you can do.',
             color = discord.Color.gold()
         )
-        embed.add_field(name= 'Syntax', value = '`.comfort <member>`')
+        embed.add_field(name= 'Comfort', value = 'Comfort a member! \n`.comfort <member>`')
+        embed.add_field(name= 'Slap', value = 'Slap a member in the face! \n`.slap <member>`')
         
         await ctx.send(embed=embed)
 
-    @help.command()
-    async def slap(self,ctx):
-        embed = discord.Embed(
-            title = 'Slap',
-            description = 'Slap a member in the face!',
-            color = discord.Color.gold()
-        )
-        embed.add_field(name= 'Syntax', value='`.slap <member>`')
-
-        await ctx.send(embed = embed)
-
     # CURRENCY
     @help.command()
-    async def balance(self, ctx):
+    async def currency(self,ctx):
         embed = discord.Embed(
-            title = 'Balance',
-            description= 'Gives the balance of a member.',
+            title = 'Currency',
+            description= 'Everything you need to know about the economy.',
             color = discord.Color.red()
         )
-        embed.add_field(name = 'Syntax', value = '`.balance [member]`')
-
-        await ctx.send(embed=embed)
-
-    @help.command()
-    async def beg(self, ctx):
-        embed = discord.Embed(
-            title = 'Beg',
-            description= 'Beg for money.',
-            color = discord.Color.red()
-        )
-        embed.add_field(name = 'Syntax', value = '`.beg`')
-
-        await ctx.send(embed=embed)
-    
-    @help.command()
-    async def work(self, ctx):
-        embed = discord.Embed(
-            title = 'Work',
-            description= 'Work for more money!',
-            color = discord.Color.red()
-        )
-        embed.add_field(name = 'Syntax', value = '`.work`')
-
-        await ctx.send(embed=embed)
-    
-    @help.command()
-    async def gamble(self, ctx):
-        embed = discord.Embed(
-            title = 'Gamble',
-            description= 'Gamble for the chance of doubling your bet',
-            color = discord.Color.red()
-        )
-        embed.add_field(name = 'Syntax', value = '`.gamble <amount>`')
-
+        embed.add_field(name = 'Balance', value = 'Gives the balance of a member. \n`.balance [member]`')
+        embed.add_field(name = 'Beg', value = 'Beg for money. \n`.beg`')
+        embed.add_field(name = 'Work', value = 'Work for more money! \n`.work`')
+        embed.add_field(name = 'Gamble', value = 'Gamble for the chance of doubling your bet. \n`.gamble <amount>`')
+        
         await ctx.send(embed=embed)
     
 def setup(bot):
