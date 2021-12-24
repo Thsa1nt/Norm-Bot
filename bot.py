@@ -29,13 +29,6 @@ async def on_command_error(ctx, error):
         return
     raise error
 
-@bot.event
-async def on_member_join(member : discord.Member):
-    default_role = discord.utils.get(member.guild.roles, id=883596677234176030)
-    await member.add_roles(default_role)
-    channel = bot.get_channel(883597617009917982)
-    await channel.send('Welcome {}!'.format(member.mention))
-
 @bot.command()
 @commands.is_owner()
 async def load(ctx, extension):
