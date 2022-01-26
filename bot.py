@@ -7,12 +7,12 @@ from discord.ext.commands.errors import CommandOnCooldown
 invite_link = 'https://discord.com/oauth2/authorize?client_id={0}&scope=bot&permissions={1}'.format(878977777074835487, 268528774)
 print(invite_link)
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix=".", intents=intents)
+bot = commands.Bot(command_prefix="n.", intents=intents)
 bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(status= discord.Status.online, activity= discord.Game(".help"))
+    await bot.change_presence(status= discord.Status.online, activity= discord.Game("n.help"))
     print('Bot is ready.')
 
 @bot.event
@@ -23,7 +23,7 @@ async def on_command_error(ctx, error):
         return
     elif isinstance(error, CommandOnCooldown):
         if error.retry_after < 60:
-            await ctx.send('Wait {0}s to use the command again.'.format(error.retry_after))
+            await ctx.send('Wait {0}s to use the command again.'.format(round(error.retry_after, 1)))
         elif error.retry_after >= 60 and error.retry_after < 3600:
             await ctx.send('Wait {0}min to use the command again.'.format(round(error.retry_after / 60, 1)))
         return
